@@ -1,0 +1,80 @@
+<p>posts works!</p>
+<section>
+  <div class="example-label">Basic</div>
+  <div class="example-button-row">
+    <button mat-button color="warn" (click)="logout()">Logout</button>
+  </div>
+</section>
+<button
+  [routerLink]="['/createPost']"
+  routerLinkActive="active"
+  mat-stroked-button
+  color="primary"
+>
+  Create New Post
+</button>
+<!-- <section>
+  <div class="example-label">Basic</div>
+  <div class="example-button-row">
+    <button mat-button color="warn" (click)="logout()">Logout</button>
+  </div>
+</section> -->
+<!-- <mat-grid-list cols="2" rowHeight="2:1" gutterSize="20px">
+  <div *ngFor="let item of list">
+    <div *ngFor="let list of item">
+      <mat-grid-tile>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{ list.title }}</mat-card-title>
+            <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Card content
+            <img
+              src="{{
+                list.picture.replace('images', 'http://localhost:8000')
+              }} "
+              alt="Mohsin"
+              width="150px"
+              height="100px"
+          /></mat-card-content>
+          <mat-card-actions>
+            <button mat-button>card button</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+  </div>
+</mat-grid-list> -->
+
+<mat-grid-list class="dis" cols="2" rowHeight="2:1" gutterSize="20px">
+  <div *ngFor="let item of list">
+    <div *ngFor="let list of item">
+      <mat-card class="example-cardd">
+        <mat-card-header>
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <mat-card-title>{{ list.title }}</mat-card-title>
+          <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img
+          mat-card-image
+          src="{{ list.picture.replace('images', 'http://localhost:8000') }} "
+          alt="Photo "
+        />
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz
+            breeds of dog from Japan. A small, agile dog that copes very well
+            with mountainous terrain, the Shiba Inu was originally bred for
+            hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</mat-grid-list>
