@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../service/shared.service';
 import { config } from '../config';
 
 @Component({
@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private service: SharedService
-  ) {}
+  ) {
+    console.log('login component');
+    this.service.getLoginUser();
+  }
   list: any = [];
   token: string = '';
   userName: any = '';
@@ -29,8 +32,8 @@ export class LoginComponent implements OnInit {
   });
 
   onSubmit() {
-    // console.log('form values', this.form.value);
-    // this.list.push(this.form.value);
+    // // console.log('form values', this.form.value);
+    // // this.list.push(this.form.value);
     this.service.getLogin(this.form.value);
     this.form.reset();
   }
@@ -38,9 +41,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const tokenn = this.service.isAuthenticated();
     console.log('token from locals storage access is ', tokenn);
-    if (tokenn) {
+    if (localStorage.getItem('currentUser')) {
+      console.log('token is available');
       this.service.isLoggedIn = true;
       this.service.username = this.userName;
+      this.router.navigate(['dashboard']);
     }
   }
 }

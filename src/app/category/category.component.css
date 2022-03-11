@@ -1,0 +1,25 @@
+.example-card {
+  width: 100%;
+  height: 100%;
+  display: inline;
+}
+.img {
+  position: absolute;
+  right: 0;
+  display: flex;
+}
+.example-cardd {
+  max-width: 45%;
+  float: left;
+  margin: 10px;
+}
+.dis {
+  /* display: inline; */
+  /* float: left; */
+  display: list-item;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}

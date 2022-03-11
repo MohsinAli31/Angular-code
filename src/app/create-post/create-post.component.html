@@ -1,7 +1,7 @@
 <form [formGroup]="profileForm" class="form-container">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Profile Information</mat-card-title>
+      <mat-card-title>Create New Post</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
@@ -14,22 +14,13 @@
           <div class="form-group">
             <label>Upload File:</label>
             <input
+              (change)="onFileSelected($event)"
               type="file"
               class="form-control"
               formControlName="picture"
               name="picture"
             />
           </div>
-          <!-- <mat-form-field class="full-width">
-            <input matInput placeholder="picture" />
-            <input
-              type="file"
-              formControlName="picture"
-              id="picture"
-              name="picture"
-              multiple="multiple"
-            />
-          </mat-form-field> -->
         </div>
       </div>
       <div class="row">
@@ -42,6 +33,19 @@
             ></textarea>
           </mat-form-field>
         </div>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-select placeholder="Select" formControlName="categoryId">
+            <div *ngFor="let item of catagoryList">
+              <mat-option value="{{ item.id }}">
+                <div>
+                  {{ item.categoryname }}
+                </div>
+              </mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
       </div>
     </mat-card-content>
     <mat-card-actions>

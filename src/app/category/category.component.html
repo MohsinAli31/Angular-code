@@ -1,1 +1,50 @@
-<p>category works!</p>
+<button
+  [routerLink]="['/createCategory']"
+  routerLinkActive="active"
+  mat-stroked-button
+  color="primary"
+>
+  Create New Category
+</button>
+<mat-grid-list class="dis" cols="2" rowHeight="2:1" gutterSize="20px">
+  <div style="float: left" *ngFor="let item of list">
+    <div *ngFor="let list of item">
+      <mat-card class="example-cardd">
+        <mat-card-header>
+          <mat-card-title>{{ list.title }}</mat-card-title>
+          <mat-card-subtitle>{{ list.description }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img
+          mat-card-image
+          src="{{ list.picture.replace('images', 'http://localhost:8000') }} "
+          alt="Photo "
+        />
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz
+            breeds of dog from Japan. A small, agile dog that copes very well
+            with mountainous terrain, the Shiba Inu was originally bred for
+            hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button> -->
+
+          <button
+            mat-button
+            [routerLink]="['/post/', list.id]"
+            routerLinkActive="active"
+          >
+            Details
+          </button>
+        </mat-card-actions>
+        <!-- <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+      </mat-card>
+    </div>
+  </div>
+</mat-grid-list>

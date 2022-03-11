@@ -14,9 +14,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 const MaterialComponents = [
+  NgxMatFileInputModule,
+  MatTooltipModule,
   MatSelectModule,
+  MatDialogModule,
   MatTableModule,
   MatCardModule,
   MatSidenavModule,

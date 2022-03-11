@@ -4,45 +4,77 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { AuthGuardsGuard } from './auth-guards.guard';
 import { PostsComponent } from './posts/posts.component';
 import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
 import { CategoryComponent } from './category/category.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { CreateCategoryComponent } from './create-category/create-category.component';
+import { PostDetailsComponent } from './posts/post-details/post-details.component';
+import { EditpostComponent } from './posts/post-details/editpost/editpost.component';
+import { AuthGuardsGuard } from './auth-guards.guard';
+import { NotAuthGuard } from './not-auth.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
     path: 'signup',
+    canActivate: [NotAuthGuard],
     component: SignupComponent,
   },
-  { path: 'category', component: CategoryComponent },
   {
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [AuthGuardsGuard],
+    path: 'category/:id',
+    component: CategoryComponent,
   },
   {
-    path: 'dashboard',
-    component: PostsComponent,
+    path: 'login',
+    canActivate: [NotAuthGuard],
+    component: LoginComponent,
+  },
+  {
+    path: 'post/edit/:id',
+    component: EditpostComponent,
   },
 
   {
-    path: 'table',
-    component: TableComponent,
+    path: 'dashboard',
+    // canActivate: [AuthGuardsGuard],
+    component: PostsComponent,
   },
   {
-    path: 'form',
+    path: 'post/:id',
+    component: PostDetailsComponent,
+    canActivate: [AuthGuardsGuard],
+  },
+  {
+    path: 'table',
+    component: TableComponent,
+    canActivate: [AuthGuardsGuard],
+  },
+  {
+    path: 'userProfile',
+    component: UserProfileComponent,
+    canActivate: [AuthGuardsGuard],
+  },
+  {
+    path: 'createProfile',
     component: FormComponent,
+    canActivate: [AuthGuardsGuard],
   },
   {
     path: 'createPost',
     component: CreatePostComponent,
+    canActivate: [AuthGuardsGuard],
+  },
+  {
+    path: 'createCategory',
+    component: CreateCategoryComponent,
+    canActivate: [AuthGuardsGuard],
   },
 ];
 

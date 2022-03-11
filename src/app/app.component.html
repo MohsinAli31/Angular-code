@@ -11,17 +11,18 @@
         >
       </button>
       <span class="example-fill-remaining-space"></span>
-      <span class="user-text">Welcome Guest</span>
+      <span class="user-text">
+        <div *ngIf="flag">Welcome {{ username }}</div>
+      </span>
       <button class="mat-button">
-        <div *ngIf="!login">Please login, friend.</div>
-        <div *ngIf="login == true">Welcome</div>
+        <!-- <div *ngIf="!login">Please login, friend.</div> -->
+        <!-- <div>Welcome</div> -->
       </button>
     </mat-toolbar>
-    <div class="main-cont">content<router-outlet></router-outlet></div>
+    <div class="main-cont"><router-outlet></router-outlet></div>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<!-- <router-outlet></router-outlet> -->
 <!-- <section>
   <div class="example-label">Basic</div>
   <div class="example-button-row">

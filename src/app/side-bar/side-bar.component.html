@@ -1,18 +1,45 @@
 <div class="profile-info">
   <div class="user-img">
-    <img src="../assets/images/angular.jpg" alt="user" />
+    <a [routerLink]="['/userProfile']" routerLinkActive="active">
+      <img src="{{ image }}" alt="user" />
+    </a>
   </div>
-  <p>User full name</p>
+  <p>{{ login }}</p>
 </div>
 
 <mat-nav-list>
   <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active"
     >Posts</a
   >
-  <a mat-list-item [routerLink]="['/category']" routerLinkActive="active"
-    >category</a
-  >
+
+  <a mat-list-item [matMenuTriggerFor]="menu">
+    Category
+
+    <mat-menu #menu="matMenu">
+      <div *ngFor="let item of list2.data">
+        <button (click)="showCategory(item.id)" mat-menu-item color="primary">
+          <a [routerLink]="['category/', item.id]" routerLinkActive="active">
+            {{ item.categoryname }}
+          </a>
+        </button>
+      </div>
+    </mat-menu>
+  </a>
+
   <a mat-list-item [routerLink]="['/table']" routerLinkActive="active">Table</a>
 
-  <a mat-list-item [routerLink]="['/form']" routerLinkActive="active">Form</a>
+  <a mat-list-item [routerLink]="['/createProfile']" routerLinkActive="active"
+    >Create/Update Profile</a
+  >
+  <div class="example-button-row"></div>
+  <div *ngIf="flag">
+    <button mat-button color="warn" (click)="logout()">
+      <div>Logout</div>
+    </button>
+  </div>
+  <div *ngIf="!flag">
+    <button mat-button color="primary" (click)="loginNow()">
+      <div>Login</div>
+    </button>
+  </div>
 </mat-nav-list>

@@ -9,14 +9,13 @@
   display: flex;
 }
 .example-cardd {
-  max-width: 45%;
+  max-width: 90%;
   float: left;
   margin: 10px;
 }
 .dis {
   /* display: inline; */
-  /* display: list-item; */
-  display: inline;
+  display: list-item;
 }
 
 .example-header-image {

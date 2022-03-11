@@ -1,0 +1,40 @@
+<button
+  [routerLink]="['/createProfile']"
+  routerLinkActive="active"
+  mat-stroked-button
+  color="primary"
+>
+  <div *ngIf="profile == true">Update Profile</div>
+  <div *ngIf="profile == false">Create Profile</div>
+</button>
+<mat-grid-list
+  *ngIf="profile == true"
+  class="dis"
+  cols="2"
+  rowHeight="2:1"
+  gutterSize="20px"
+>
+  <div style="float: left" class="userProfile">
+    <div>
+      <mat-card class="example-cardd">
+        <mat-card-header>
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <mat-card-title>{{ userName }}</mat-card-title>
+          <mat-card-subtitle>{{ bio }}</mat-card-subtitle>
+          <mat-card-subtitle>Phone:{{ phonenumber }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <img
+            mat-card-image
+            src="{{ imageUrl }} "
+            alt="Photo "
+            width="80%"
+            height="400px"
+          />
+
+          <p></p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</mat-grid-list>

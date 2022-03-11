@@ -9,7 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedService } from './shared.service';
+import { SharedService } from './service/shared.service';
 import { AuthGuardsGuard } from './auth-guards.guard';
 import { MaterialModule } from './material/material.module';
 import { FormComponent } from './form/form.component';
@@ -19,6 +19,12 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { TableComponent } from './table/table.component';
 import { CategoryComponent } from './category/category.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { CreateCategoryComponent } from './create-category/create-category.component';
+import { PostDetailsComponent } from './posts/post-details/post-details.component';
+import { EditpostComponent } from './posts/post-details/editpost/editpost.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './reducers';
 
 @NgModule({
   declarations: [
@@ -33,6 +39,10 @@ import { CreatePostComponent } from './create-post/create-post.component';
     TableComponent,
     CategoryComponent,
     CreatePostComponent,
+    CreateCategoryComponent,
+    PostDetailsComponent,
+    EditpostComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +52,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    StoreModule.forRoot(rootReducer),
   ],
   providers: [SharedService, AuthGuardsGuard],
   bootstrap: [AppComponent],
